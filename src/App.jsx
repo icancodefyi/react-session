@@ -395,31 +395,6 @@ function App() {
       </main>
       </div>
 
-      <footer className="site-footer">
-        <p className="footer-by">
-          Built with React for the CSI ACE session by{' '}
-          <a href={RAKHANGE_LINKEDIN} target="_blank" rel="noreferrer noopener">
-            Zaid Rakhange
-          </a>
-        </p>
-        <div className="footer-socials">
-          <a className="footer-link" href={RAKHANGE_GITHUB} target="_blank" rel="noreferrer noopener">
-            <GitHubIcon /> GitHub
-          </a>
-          <a className="footer-link" href={RAKHANGE_LINKEDIN} target="_blank" rel="noreferrer noopener">
-            <LinkedInIcon /> LinkedIn
-          </a>
-          <a
-            className="footer-link"
-            href="https://github.com/icancodefyi/react-session"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Source code
-          </a>
-        </div>
-      </footer>
-
       {showLock ? (
         <LockModal
           onClose={() => setShowLock(false)}
