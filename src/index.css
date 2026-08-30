@@ -280,15 +280,7 @@ body {
   white-space: nowrap;
 }
 
-.brand-tag {
-  font-family: 'Ethnocentric Rg', 'Michroma', sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--accent);
-  white-space: nowrap;
-  text-transform: uppercase;
-}
+
 
 .topbar-links {
   display: flex;
@@ -594,6 +586,47 @@ body {
   text-align: right;
   padding-right: 14px;
   color: rgba(75, 85, 99, 0.4);
+}
+
+/* ---------- example blurb (what happens here) ---------- */
+
+.blurb {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.blurb-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.blurb-key {
+  flex: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 4px 10px;
+  margin-top: 1px;
+}
+
+.blurb-key-sol {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+}
+
+.blurb-text {
+  font-size: 13.75px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0;
 }
 
 /* ---------- theory ---------- */

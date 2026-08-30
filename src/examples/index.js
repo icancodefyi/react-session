@@ -38,6 +38,10 @@ export const conceptExamples = [
     num: '01',
     title: 'JSX',
     teach: 'Layout with JavaScript. Variables, expressions, and objects inside {curly braces}.',
+    blurb: {
+      starter: 'A finished student-profile card — one name, one batch, a skill list. All typed out by hand as fixed text.',
+      solution: 'The same card, but every label is printed by {curly braces} reading from a JS object — name, uppercase name, batch, and each skill. Change the data and the card changes.',
+    },
     theory: [
       {
         h: 'What it is',
@@ -91,6 +95,10 @@ const batch = 2027
     num: '02',
     title: 'Components',
     teach: 'Break the page into small, reusable pieces. Build the UI from custom tags.',
+    blurb: {
+      starter: 'Two team-member cards, one after the other — the whole card markup is copied and pasted twice.',
+      solution: 'One Card built from tiny components — Badge, MemberName, MemberRole — and App composes it as many times as it needs. Same output, zero duplication.',
+    },
     theory: [
       {
         h: 'What it is',
@@ -150,6 +158,10 @@ const batch = 2027
     num: '03',
     title: 'Props',
     teach: 'Make components accept data. One component, many layouts.',
+    blurb: {
+      starter: 'Two pricing cards, Basic and Pro, hard-coded side by side — separate markup, duplicated styles.',
+      solution: 'One generic PricingCard component. The same JSX is rendered with different props (plan, price, features) — one component produces both cards.',
+    },
     theory: [
       {
         h: 'What it is',
@@ -204,6 +216,10 @@ const batch = 2027
     num: '04',
     title: 'useState',
     teach: 'Give the page memory. Variables reset on reload — state survives.',
+    blurb: {
+      starter: 'A like counter frozen at "0 likes" with a Like button that responds to nothing.',
+      solution: 'The count lives in state. Clicking Like calls the setter, the number re-renders, and the button keeps counting up.',
+    },
     theory: [
       {
         h: 'What it is',
@@ -259,6 +275,10 @@ const batch = 2027
     num: '05',
     title: 'Events',
     teach: 'React to a click or a keystroke. Handle input, then re-render.',
+    blurb: {
+      starter: 'A guest book with a name field and a "Sign in" button. Typing and clicking do nothing at all.',
+      solution: 'Handlers come alive: every keystroke lands in state via onChange, submitting runs a handler that prevents a page reload, and the guest signs in.',
+    },
     theory: [
       {
         h: 'What it is',
@@ -321,6 +341,10 @@ onClick={handleLike()}   // wrong — runs immediately, does nothing later`,
     num: '06',
     title: 'Conditional',
     teach: 'Render different UI depending on state. The classic "if else" in JSX.',
+    blurb: {
+      starter: 'A workshop card that says "24 people are going" with one Join button.',
+      solution: 'State decides the screen: not joined shows the Join button, joined shows a different message and a Leave button — the same card, two faces, via ternary and &&.',
+    },
     theory: [
       {
         h: 'What it is',
@@ -380,6 +404,10 @@ return <Dashboard />`,
     num: '07',
     title: 'useEffect',
     teach: 'Do something when state changes — sync the outside world (the tab title).',
+    blurb: {
+      starter: 'A working counter: +1 and reset buttons update the number on screen.',
+      solution: 'Same counter, plus a side effect — the browser tab title now follows the count, updated via useEffect after every change.',
+    },
     theory: [
       {
         h: 'What it is',
@@ -423,6 +451,10 @@ return <Dashboard />`,
     num: '08',
     title: 'useRef',
     teach: 'Reach for elements directly without causing a re-render.',
+    blurb: {
+      starter: 'A search input and a "Focus the input" button that does nothing.',
+      solution: 'A ref attaches directly to the input; clicking the button calls inputRef.current.focus() — touching the real element with no re-render.',
+    },
     theory: [
       {
         h: 'What it is',

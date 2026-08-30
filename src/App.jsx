@@ -87,6 +87,22 @@ function ConceptView({ item, unlocked, onRequestSolution, onRelock, templateCss 
       </h1>
       <p className="subhead">{item.teach}</p>
 
+      {item.blurb ? (
+        <div className="ex-panel">
+          <div className="ex-label">What happens here</div>
+          <div className="blurb">
+            <div className="blurb-row">
+              <span className="blurb-key">Starter</span>
+              <p className="blurb-text">{item.blurb.starter}</p>
+            </div>
+            <div className="blurb-row">
+              <span className="blurb-key blurb-key-sol">Solution</span>
+              <p className="blurb-text">{item.blurb.solution}</p>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <div className="ex-panel theory">
         <div className="ex-label">Theory</div>
         {item.theory.map((block, i) => {
@@ -391,7 +407,6 @@ function App() {
         <div className="brand">
           <img className="brand-logo" src="/csi-logo.svg" alt="CSI ACE logo" />
           <span className="brand-title">React Session</span>
-          <span className="brand-tag">CSI-ACE</span>
         </div>
         <nav className="topbar-links">
           <a
