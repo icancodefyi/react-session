@@ -389,7 +389,7 @@ function App() {
     <>
       <header className="topbar">
         <div className="brand">
-          <img className="brand-logo" src="/favicon.svg" alt="CSI ACE logo" />
+          <img className="brand-logo" src="/csi-logo.svg" alt="CSI ACE logo" />
           <span className="brand-title">React Session</span>
           <span className="brand-tag">CSI-ACE</span>
         </div>
