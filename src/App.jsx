@@ -2,6 +2,7 @@ import { useState } from 'react'
 import CodeBlock from './site/CodeBlock.jsx'
 import { liveStages } from './live-project/stages'
 import { conceptExamples } from './examples'
+import { miniProjects } from './mini-project'
 
 const SOLUTIONS_PASSWORD = 'session-zaid'
 
@@ -15,6 +16,11 @@ const groups = [
     kind: 'stage',
     name: 'Live Project — Event RSVP',
     items: liveStages,
+  },
+  {
+    kind: 'miniproject',
+    name: 'Mini Project',
+    items: miniProjects,
   },
 ]
 
@@ -237,7 +243,9 @@ function App() {
           <>
             <h1>{current.found.name}</h1>
             <p className="subhead">
-              Live project stage — run it in the browser, no branch switching needed.
+              {current.kind === 'miniproject'
+                ? 'Mini project — every concept, one fun game. Let the students play against the CPU after the session.'
+                : 'Live project stage — run it in the browser, no branch switching needed.'}
             </p>
             {Active ? <Active /> : null}
           </>

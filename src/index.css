@@ -507,3 +507,87 @@ body {
   font-weight: 500;
   margin-bottom: 12px;
 }
+
+/* ---------- mini project (rock paper scissors) ---------- */
+
+.rps-card {
+  margin: 0 auto;
+}
+
+.rps-scores {
+  margin-bottom: 18px;
+}
+
+.rps-fight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  padding: 12px 0 6px;
+}
+
+.rps-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.rps-emoji {
+  font-size: 46px;
+  line-height: 1;
+}
+
+.rps-name {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.rps-vs {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.rps-result {
+  margin: 14px 0;
+  font-size: 16px;
+}
+
+.rps-choices {
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.rps-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 92px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 8px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.rps-choice:hover {
+  filter: brightness(0.96);
+}
+
+.rps-choice-emoji {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.rps-reset {
+  width: 100%;
+}
