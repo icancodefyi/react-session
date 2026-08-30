@@ -51,6 +51,20 @@ function ConceptView({ item, unlocked, onRequestSolution, onRelock }) {
       </h1>
       <p className="subhead">{item.teach}</p>
 
+      <div className="ex-panel theory">
+        <div className="ex-label">Theory — explain this out loud before the demo</div>
+        {item.theory.map((section) => (
+          <section key={section.title} className="theory-section">
+            <h4>{section.title}</h4>
+            <ul>
+              {section.points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+
       <div className="ex-panel">
         <div className="ex-label">
           Preview
