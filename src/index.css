@@ -213,18 +213,83 @@ body {
   color: var(--accent);
 }
 
+/* ---------- topbar ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 56px;
+  padding: 0 20px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.brand-mark {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.brand-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.brand-tag {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.topbar-link {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: color 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+
+.topbar-link:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
 /* ---------- example browser (viewer) ---------- */
 
 .viewer {
   display: grid;
   grid-template-columns: 300px 1fr;
-  min-height: 100vh;
+  min-height: calc(100vh - 56px);
 }
 
 .sidebar {
   position: sticky;
-  top: 0;
-  height: 100vh;
+  top: 56px;
+  height: calc(100vh - 56px);
   overflow-y: auto;
   background: var(--panel);
   border-right: 1px solid var(--border);
@@ -256,6 +321,8 @@ body {
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: 2px;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .side-item:hover {
@@ -267,10 +334,14 @@ body {
   background: var(--accent-soft);
   border-color: var(--accent);
   color: var(--text);
+  font-weight: 600;
 }
 
 .content {
-  padding: 48px 32px;
+  max-width: 880px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 48px 32px 80px;
 }
 
 .content h1 {
@@ -356,9 +427,19 @@ body {
   padding: 6px 14px;
   border-radius: 7px;
   cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.seg-btn:hover {
+  color: var(--text);
 }
 
 .seg-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.seg-btn.active:hover {
   background: var(--accent);
   color: #fff;
 }
@@ -484,11 +565,12 @@ body {
 .lock-overlay {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 100;
   display: grid;
   place-items: center;
   background: rgba(15, 17, 23, 0.45);
   padding: 20px;
+  animation: lock-fade 0.18s ease;
 }
 
 .lock-modal {
@@ -499,6 +581,17 @@ body {
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 20px 60px rgba(15, 17, 23, 0.2);
+  animation: lock-pop 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+@keyframes lock-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes lock-pop {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .lock-modal h3 {

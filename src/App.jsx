@@ -280,24 +280,40 @@ function App() {
   const current = findItem(activeId)
 
   return (
-    <div className="viewer">
-      <aside className="sidebar">
-        <h2>Workshop Reference</h2>
-        {groups.map((group) => (
-          <div key={group.id || group.name || group.kind}>
-            <h2>{group.name}</h2>
-            {group.items.map((item) => (
-              <button
-                key={item.id}
-                className={'side-item' + (item.id === activeId ? ' active' : '')}
-                onClick={() => setActiveId(item.id)}
-              >
-                {item.num ? `${item.num} · ${item.title}` : item.name}
-              </button>
-            ))}
-          </div>
-        ))}
-      </aside>
+    <>
+      <header className="topbar">
+        <div className="brand">
+          <span className="brand-mark">⚛️</span>
+          <span className="brand-title">React Session</span>
+          <span className="brand-tag">CSI ACE</span>
+        </div>
+        <a
+          className="topbar-link"
+          href="https://github.com/icancodefyi/react-session"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          View source on GitHub ↗
+        </a>
+      </header>
+
+      <div className="viewer">
+        <aside className="sidebar">
+          {groups.map((group) => (
+            <div key={group.name}>
+              <h2>{group.name}</h2>
+              {group.items.map((item) => (
+                <button
+                  key={item.id}
+                  className={'side-item' + (item.id === activeId ? ' active' : '')}
+                  onClick={() => setActiveId(item.id)}
+                >
+                  {item.num ? `${item.num} · ${item.title}` : item.name}
+                </button>
+              ))}
+            </div>
+          ))}
+        </aside>
 
       <main className="content">
         {!current ? (
@@ -317,6 +333,7 @@ function App() {
           <p className="subhead">Pick a section from the sidebar.</p>
         )}
       </main>
+      </div>
 
       {showLock ? (
         <LockModal
@@ -324,7 +341,7 @@ function App() {
           onUnlock={unlock}
         />
       ) : null}
-    </div>
+    </>
   )
 }
 
