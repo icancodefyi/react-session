@@ -411,30 +411,36 @@ body {
 
 /* ---------- theory ---------- */
 
-.theory-section {
-  margin-bottom: 18px;
-}
-
-.theory-section:last-child {
-  margin-bottom: 0;
-}
-
-.theory-section h4 {
+.theory-h {
   font-size: 12px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 700;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
 }
 
-.theory-section ul {
+.theory-h + .theory-h,
+.theory-ul + .theory-h,
+.theory-p + .theory-h,
+.code-block + .theory-h {
+  margin-top: 20px;
+}
+
+.theory-p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+
+.theory-ul {
   list-style: none;
-  margin: 0;
+  margin: 0 0 14px;
   padding: 0;
 }
 
-.theory-section li {
+.theory-ul li {
   position: relative;
   padding-left: 18px;
   font-size: 13.5px;
@@ -443,11 +449,15 @@ body {
   margin-bottom: 7px;
 }
 
-.theory-section li::before {
+.theory-ul li::before {
   content: '—';
   position: absolute;
   left: 0;
   color: var(--accent);
+}
+
+.theory .code-block {
+  margin-bottom: 14px;
 }
 
 /* ---------- solution lock ---------- */
