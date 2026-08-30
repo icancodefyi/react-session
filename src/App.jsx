@@ -53,6 +53,7 @@ const RAKHANGE_LINKEDIN = 'https://www.linkedin.com/in/rakhangezaid/'
 const RAKHANGE_GITHUB = 'https://github.com/icancodefyi'
 
 const SOLUTIONS_PASSWORD = 'session-zaid'
+const STAGES_PASSWORD = 'rps'
 
 const groups = [
   {
@@ -196,9 +197,59 @@ function ConceptView({ item, unlocked, onRequestSolution, onRelock, templateCss 
   )
 }
 
-function StageView({ item, templateCss }) {
+function StageView({ item, templateCss, locked, onUnlockStages }) {
   const [codeMode, setCodeMode] = useState('app')
+  const [pass, setPass] = useState('')
+  const [passError, setPassError] = useState(false)
   const Active = item.Component
+
+  function submitStageUnlock(e) {
+    e.preventDefault()
+    if (pass === STAGES_PASSWORD) {
+      onUnlockStages()
+      setPass('')
+      setPassError(false)
+    } else {
+      setPassError(true)
+    }
+  }
+
+  if (locked) {
+    return (
+      <>
+        <h1>{item.name}</h1>
+        <p className="subhead">
+          {item.topic ? `${item.topic} — ` : ''}{item.intro}
+        </p>
+
+        <div className="ex-panel">
+          <div className="stage-lock">
+            <span className="stage-lock-icon"><LockIcon size={18} /></span>
+            <h3>Stage locked</h3>
+            <p className="demo-note">
+              Stage 0 stays open as the starting point. Unlock the rest of the
+              build with the password from the session.
+            </p>
+            <form className="stage-lock-form" onSubmit={submitStageUnlock}>
+              <input
+                className="name-input"
+                type="password"
+                placeholder="Enter password"
+                value={pass}
+                onChange={(e) => {
+                  setPass(e.target.value)
+                  setPassError(false)
+                }}
+                autoFocus
+              />
+              {passError ? <p className="lock-error">Wrong password — try again.</p> : null}
+              <button className="btn" type="submit">Unlock stages</button>
+            </form>
+          </div>
+        </div>
+      </>
+    )
+  }
 
   return (
     <>
@@ -306,6 +357,13 @@ function App() {
       return false
     }
   })
+  const [stagesUnlocked, setStagesUnlocked] = useState(() => {
+    try {
+      return sessionStorage.getItem('csi-rps-unlocked') === '1'
+    } catch {
+      return false
+    }
+  })
   const [showLock, setShowLock] = useState(false)
 
   function unlock() {
@@ -316,6 +374,15 @@ function App() {
     }
     setSolutionsUnlocked(true)
     setShowLock(false)
+  }
+
+  function unlockStages() {
+    try {
+      sessionStorage.setItem('csi-rps-unlocked', '1')
+    } catch {
+      /* storage unavailable */
+    }
+    setStagesUnlocked(true)
   }
 
   function relock() {
@@ -388,7 +455,13 @@ function App() {
             templateCss={templateCss}
           />
         ) : current.kind === 'stage' ? (
-          <StageView key={activeId} item={current.found} templateCss={templateCss} />
+          <StageView
+            key={activeId}
+            item={current.found}
+            templateCss={templateCss}
+            locked={current.found.id !== 'rps-0' && !stagesUnlocked}
+            onUnlockStages={unlockStages}
+          />
         ) : (
           <p className="subhead">Pick a section from the sidebar.</p>
         )}
