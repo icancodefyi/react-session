@@ -34,7 +34,6 @@ function ConceptView({ item, unlocked, onRequestSolution, onRelock, templateCss 
   const Active = previewMode === 'starter' ? item.Starter : item.Solution
 
   function switchPreview(mode) {
-    if (mode === 'solution' && !unlocked) return onRequestSolution()
     setPreviewMode(mode)
   }
 
@@ -78,7 +77,7 @@ function ConceptView({ item, unlocked, onRequestSolution, onRelock, templateCss 
               className={'seg-btn' + (previewMode === 'solution' ? ' active' : '')}
               onClick={() => switchPreview('solution')}
             >
-              {unlocked ? 'Solution' : 'Solution 🔒'}
+              Solution
             </button>
           </div>
         </div>
