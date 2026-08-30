@@ -55,12 +55,12 @@ export const conceptExamples = [
         p: 'Anything between { and } inside JSX is a real JavaScript expression, and its result is what gets painted. Variables print, arithmetic runs, function calls return:',
       },
       {
-        code: `const name = 'Zaid'
-const age = 22
+        code: `const name = 'Zaid Rakhange'
+const batch = 2027
 
-<h1>{name}</h1>              // Zaid
-<h2>{age + 2}</h2>           // 24
-<p>{name.toUpperCase()}</p>  // ZAID`,
+<h1>{name}</h1>              // Zaid Rakhange
+<h2>{batch}</h2>            // 2027
+<p>{name.toUpperCase()}</p>  // ZAID RAKHANGE`,
       },
       {
         p: 'The expression is evaluated before anything touches the screen, so you build markup from data instead of typing "{name}" out. Anything that evaluates to a value works: a variable, a calculation, a function call, string length.',

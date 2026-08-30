@@ -3,7 +3,7 @@ function Badge() {
 }
 
 function MemberName() {
-  return <h1 className="ev-title">Priya Sharma</h1>
+  return <h1 className="ev-title">Zaid Rakhange</h1>
 }
 
 function MemberRole() {

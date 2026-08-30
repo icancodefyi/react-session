@@ -2,7 +2,7 @@ function App() {
   return (
     <div className="card">
       <span className="badge">Student Profile</span>
-      <h1 className="ev-title">Priya Sharma</h1>
+      <h1 className="ev-title">Zaid Rakhange</h1>
       <p className="desc">Batch of 2027 · Computer Science</p>
       <div className="row">
         <span className="pill pill-blue">React</span>

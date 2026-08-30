@@ -3,7 +3,7 @@ function App() {
     <main className="page">
       <div className="card">
         <span className="badge">Core Team</span>
-        <h1 className="ev-title">Priya Sharma</h1>
+        <h1 className="ev-title">Zaid Rakhange</h1>
         <p className="going">Web Lead</p>
         <div className="row">
           <span className="pill pill-blue">Web</span>

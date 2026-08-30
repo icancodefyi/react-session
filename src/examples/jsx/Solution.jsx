@@ -1,5 +1,5 @@
 const student = {
-  name: 'Priya Sharma',
+  name: 'Zaid Rakhange',
   batch: 2027,
   branch: 'Computer Science',
   skills: ['React', 'Vite'],
@@ -21,7 +21,7 @@ function App() {
       <p className="going">
         Member for {2027 - student.joined} years
       </p>
-      <p className="demo-note">Her name has {student.name.length} letters — JSX can compute.</p>
+      <p className="demo-note">This name has {student.name.length} letters — JSX can compute.</p>
     </div>
   )
 }
