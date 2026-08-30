@@ -411,7 +411,7 @@ function App() {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <GitHubIcon /> GitHub
+            <GitHubIcon /> Zaid's GitHub
           </a>
           <a
             className="topbar-link"
@@ -419,7 +419,7 @@ function App() {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <LinkedInIcon /> LinkedIn
+            <LinkedInIcon /> Zaid's LinkedIn
           </a>
         </nav>
       </header>

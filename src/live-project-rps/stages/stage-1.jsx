@@ -28,15 +28,15 @@ function Moves() {
   return (
     <div className="row rps-choices">
       <button className="rps-choice">
-        <span className="rps-choice-emoji">\u270a</span>
+        <span className="rps-choice-emoji">✊</span>
         <span>Rock</span>
       </button>
       <button className="rps-choice">
-        <span className="rps-choice-emoji">\u270b</span>
+        <span className="rps-choice-emoji">✋</span>
         <span>Paper</span>
       </button>
       <button className="rps-choice">
-        <span className="rps-choice-emoji">\u270c\ufe0f</span>
+        <span className="rps-choice-emoji">✌️</span>
         <span>Scissors</span>
       </button>
     </div>
