@@ -1,4 +1,4 @@
-import StageApp from './live-project/stages/stage-3.jsx'
+import StageApp from './live-project/stages/stage-4.jsx'
 
 function App() {
   return <StageApp />
