@@ -28,7 +28,7 @@ function findItem(id) {
 }
 
 function ConceptView({ item, unlocked, onRequestSolution, onRelock, templateCss }) {
-  const [previewMode, setPreviewMode] = useState('solution')
+  const [previewMode, setPreviewMode] = useState('starter')
   const [codeMode, setCodeMode] = useState('starter')
 
   const Active = previewMode === 'starter' ? item.Starter : item.Solution
