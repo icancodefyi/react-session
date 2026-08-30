@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import CodeBlock from './site/CodeBlock.jsx'
 import { liveStages } from './live-project/stages'
-import { labSections } from './reference-lab'
 import { conceptExamples } from './examples'
 
 const SOLUTIONS_PASSWORD = 'session-zaid'
@@ -17,7 +16,6 @@ const groups = [
     name: 'Live Project — Event RSVP',
     items: liveStages,
   },
-  ...labSections,
 ]
 
 function findItem(id) {
@@ -239,9 +237,7 @@ function App() {
           <>
             <h1>{current.found.name}</h1>
             <p className="subhead">
-              {current.kind === 'stage'
-                ? 'Live project stage — run it in the browser, no branch switching needed.'
-                : 'Reference lab — a tiny, focused example.'}
+              Live project stage — run it in the browser, no branch switching needed.
             </p>
             {Active ? <Active /> : null}
           </>

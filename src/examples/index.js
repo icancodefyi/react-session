@@ -89,6 +89,7 @@ export const conceptExamples = [
           'Split a page into pieces: Badge, MemberName, MemberRole — each is its own function.',
           'Reuse a piece anywhere without copying its markup again.',
           'App composes smaller components, like stacking blocks.',
+          'Children: JSX placed between your tags (<Card>…</Card>) arrives as a special children prop this component renders wherever it likes.',
         ],
       },
       {
@@ -125,6 +126,8 @@ export const conceptExamples = [
           'One component + different props = many different cards on the page.',
           'Props can be strings, numbers, booleans, arrays — even other JSX.',
           'popular with no value means popular={true} — a common shorthand.',
+          'Defaults: function PricingCard({ plan = "Free" }) kicks in when no prop is passed.',
+          'Spread: <PricingCard {...event} /> passes every field of event as props.',
         ],
       },
       {
