@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import CodeBlock from './site/CodeBlock.jsx'
-import { liveStages } from './live-project/stages'
+import { rpsStages } from './live-project-rps'
 import { conceptExamples } from './examples'
-import { miniProjects } from './mini-project'
 
 const SOLUTIONS_PASSWORD = 'session-zaid'
 
@@ -14,13 +13,8 @@ const groups = [
   },
   {
     kind: 'stage',
-    name: 'Live Project — Event RSVP',
-    items: liveStages,
-  },
-  {
-    kind: 'miniproject',
-    name: 'Mini Project',
-    items: miniProjects,
+    name: 'Live Project — Rock Paper Scissors',
+    items: rpsStages,
   },
 ]
 
@@ -132,6 +126,38 @@ function ConceptView({ item, unlocked, onRequestSolution, onRelock }) {
   )
 }
 
+function StageView({ item }) {
+  const Active = item.Component
+
+  return (
+    <>
+      <h1>{item.name}</h1>
+      <p className="subhead">
+        {item.topic ? `${item.topic} — ` : ''}{item.intro}
+      </p>
+
+      <div className="ex-panel">
+        <div className="ex-label">Do this — build it</div>
+        <ol className="build-steps">
+          {item.steps.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      </div>
+
+      <div className="ex-panel">
+        <div className="ex-label">Code — src/App.jsx</div>
+        <CodeBlock code={item.code} title="src/App.jsx" />
+      </div>
+
+      <div className="ex-panel">
+        <div className="ex-label">Result — run it</div>
+        <Active />
+      </div>
+    </>
+  )
+}
+
 function LockModal({ onClose, onUnlock }) {
   const [input, setInput] = useState('')
   const [error, setError] = useState(false)
@@ -206,7 +232,6 @@ function App() {
   }
 
   const current = findItem(activeId)
-  const Active = current?.found?.Component ?? null
 
   return (
     <div className="viewer">
@@ -239,16 +264,10 @@ function App() {
             onRequestSolution={() => setShowLock(true)}
             onRelock={relock}
           />
+        ) : current.kind === 'stage' ? (
+          <StageView key={activeId} item={current.found} />
         ) : (
-          <>
-            <h1>{current.found.name}</h1>
-            <p className="subhead">
-              {current.kind === 'miniproject'
-                ? 'Mini project — every concept, one fun game. Let the students play against the CPU after the session.'
-                : 'Live project stage — run it in the browser, no branch switching needed.'}
-            </p>
-            {Active ? <Active /> : null}
-          </>
+          <p className="subhead">Pick a section from the sidebar.</p>
         )}
       </main>
 
