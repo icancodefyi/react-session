@@ -5,7 +5,7 @@ function EventCard({ title, tagline, day, time, location, attendees }) {
   const [goingCount, setGoingCount] = useState(attendees)
 
   useEffect(() => {
-    document.title = joined ? 'You're attending! 🎉' : title
+    document.title = joined ? "You're attending! 🎉" : title
   }, [joined, title])
 
   function handleJoin() {

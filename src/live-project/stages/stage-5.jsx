@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 function EventCard({ title, tagline, day, time, location, attendees }) {
-  const [joined, setJoined] = useState(false)
+  const [joined, setJoined] = useState(false) // eslint-disable-line no-unused-vars
   const [goingCount, setGoingCount] = useState(attendees)
 
   function handleJoin() {

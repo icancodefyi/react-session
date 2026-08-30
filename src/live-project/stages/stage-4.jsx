@@ -1,7 +1,9 @@
 import { useState } from 'react'
 
 function EventCard({ title, tagline, day, time, location, attendees }) {
+  // eslint-disable-next-line no-unused-vars
   const [joined, setJoined] = useState(false)
+  // eslint-disable-next-line no-unused-vars
   const [goingCount, setGoingCount] = useState(attendees)
 
   return (

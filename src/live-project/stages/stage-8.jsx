@@ -7,7 +7,7 @@ function EventCard({ title, tagline, day, time, location, attendees }) {
   const nameRef = useRef(null)
 
   useEffect(() => {
-    document.title = joined ? 'You're attending! 🎉' : title
+    document.title = joined ? "You're attending! 🎉" : title
     nameRef.current?.focus()
   }, [joined, title])
 
