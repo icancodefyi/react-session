@@ -28,6 +28,7 @@ export const rpsStages = [
       'Create the project: npm create vite@latest rps -- --template react',
       'Enter it and install: cd rps, then npm install, then npm run dev',
       'Open src/App.jsx, delete the template demo code and paste in the code below',
+      'Paste the stylesheet from the CSS tab into src/index.css — you only do this once, every stage shares it',
       'Save — the page updates instantly (hot reload)',
       'Click the buttons and be disappointed: nothing happens. Correct — there is no logic yet.',
     ],

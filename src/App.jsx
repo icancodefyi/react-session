@@ -2,6 +2,7 @@ import { useState } from 'react'
 import CodeBlock from './site/CodeBlock.jsx'
 import { rpsStages } from './live-project-rps'
 import { conceptExamples } from './examples'
+import templateCss from './examples/template.css?raw'
 
 const SOLUTIONS_PASSWORD = 'session-zaid'
 
@@ -26,7 +27,7 @@ function findItem(id) {
   return null
 }
 
-function ConceptView({ item, unlocked, onRequestSolution, onRelock }) {
+function ConceptView({ item, unlocked, onRequestSolution, onRelock, templateCss }) {
   const [previewMode, setPreviewMode] = useState('starter')
   const [codeMode, setCodeMode] = useState('starter')
 
@@ -100,16 +101,31 @@ function ConceptView({ item, unlocked, onRequestSolution, onRelock }) {
             >
               {unlocked ? 'Solution' : 'Solution 🔒'}
             </button>
+            <button
+              className={'seg-btn' + (codeMode === 'css' ? ' active' : '')}
+              onClick={() => setCodeMode('css')}
+            >
+              CSS
+            </button>
           </div>
         </div>
-        <CodeBlock
-          code={codeMode === 'starter' ? item.starterCode : item.solutionCode}
-          title={
-            codeMode === 'starter'
-              ? 'src/examples/Starter.jsx'
-              : 'src/examples/Solution.jsx'
-          }
-        />
+        {codeMode === 'css' ? (
+          <>
+            <CodeBlock code={templateCss} title="src/index.css" language="css" />
+            <p className="demo-note">
+              The styling, already done for you. Add this once — every example shares it.
+            </p>
+          </>
+        ) : (
+          <CodeBlock
+            code={codeMode === 'starter' ? item.starterCode : item.solutionCode}
+            title={
+              codeMode === 'starter'
+                ? 'src/examples/Starter.jsx'
+                : 'src/examples/Solution.jsx'
+            }
+          />
+        )}
       </div>
 
       {unlocked ? (
@@ -126,7 +142,8 @@ function ConceptView({ item, unlocked, onRequestSolution, onRelock }) {
   )
 }
 
-function StageView({ item }) {
+function StageView({ item, templateCss }) {
+  const [codeMode, setCodeMode] = useState('app')
   const Active = item.Component
 
   return (
@@ -146,8 +163,33 @@ function StageView({ item }) {
       </div>
 
       <div className="ex-panel">
-        <div className="ex-label">Code — src/App.jsx</div>
-        <CodeBlock code={item.code} title="src/App.jsx" />
+        <div className="ex-label">
+          Code
+          <div className="seg">
+            <button
+              className={'seg-btn' + (codeMode === 'app' ? ' active' : '')}
+              onClick={() => setCodeMode('app')}
+            >
+              App.jsx
+            </button>
+            <button
+              className={'seg-btn' + (codeMode === 'css' ? ' active' : '')}
+              onClick={() => setCodeMode('css')}
+            >
+              CSS
+            </button>
+          </div>
+        </div>
+        {codeMode === 'css' ? (
+          <>
+            <CodeBlock code={templateCss} title="src/index.css" language="css" />
+            <p className="demo-note">
+              One stylesheet for the whole game — add it once at Stage 0.
+            </p>
+          </>
+        ) : (
+          <CodeBlock code={item.code} title="src/App.jsx" />
+        )}
       </div>
 
       <div className="ex-panel">
@@ -263,9 +305,10 @@ function App() {
             unlocked={solutionsUnlocked}
             onRequestSolution={() => setShowLock(true)}
             onRelock={relock}
+            templateCss={templateCss}
           />
         ) : current.kind === 'stage' ? (
-          <StageView key={activeId} item={current.found} />
+          <StageView key={activeId} item={current.found} templateCss={templateCss} />
         ) : (
           <p className="subhead">Pick a section from the sidebar.</p>
         )}
