@@ -87,7 +87,7 @@ function ConceptView({ item, unlocked, onRequestSolution, onRelock, templateCss 
 
       <div className="ex-panel">
         <div className="ex-label">
-          Code — students copy-paste the Starter, you build the Solution together.
+          Code — students copy-paste the Starter and CSS, you build the Solution together.
           <div className="seg">
             <button
               className={'seg-btn' + (codeMode === 'starter' ? ' active' : '')}
@@ -96,16 +96,16 @@ function ConceptView({ item, unlocked, onRequestSolution, onRelock, templateCss 
               Starter
             </button>
             <button
-              className={'seg-btn' + (codeMode === 'solution' ? ' active' : '')}
-              onClick={() => switchCode('solution')}
-            >
-              {unlocked ? 'Solution' : 'Solution 🔒'}
-            </button>
-            <button
               className={'seg-btn' + (codeMode === 'css' ? ' active' : '')}
               onClick={() => setCodeMode('css')}
             >
               CSS
+            </button>
+            <button
+              className={'seg-btn' + (codeMode === 'solution' ? ' active' : '')}
+              onClick={() => switchCode('solution')}
+            >
+              {unlocked ? 'Solution' : 'Solution 🔒'}
             </button>
           </div>
         </div>
