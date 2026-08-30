@@ -1,11 +1,7 @@
-import React from 'react'
+import StageApp from './live-project/stages/stage-0.jsx'
 
-const App = () => {
-  return (
-    <div>
-      <h1>Hello World!</h1>
-    </div>
-  )
+function App() {
+  return <StageApp />
 }
 
 export default App
