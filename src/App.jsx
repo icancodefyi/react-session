@@ -4,17 +4,6 @@ import { rpsStages } from './live-project-rps'
 import { conceptExamples } from './examples'
 import templateCss from './examples/template.css?raw'
 
-function AtomMark({ size = 18 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
-      <circle cx="12" cy="12" r="2.1" fill="currentColor" stroke="none" />
-      <ellipse cx="12" cy="12" rx="9.6" ry="4.1" />
-      <ellipse cx="12" cy="12" rx="9.6" ry="4.1" transform="rotate(60 12 12)" />
-      <ellipse cx="12" cy="12" rx="9.6" ry="4.1" transform="rotate(120 12 12)" />
-    </svg>
-  )
-}
-
 function GitHubIcon({ size = 15 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -400,9 +389,9 @@ function App() {
     <>
       <header className="topbar">
         <div className="brand">
-          <span className="brand-mark"><AtomMark /></span>
+          <img className="brand-logo" src="/favicon.svg" alt="CSI ACE logo" />
           <span className="brand-title">React Session</span>
-          <span className="brand-tag">CSI ACE</span>
+          <span className="brand-tag">CSI-ACE</span>
         </div>
         <nav className="topbar-links">
           <a
