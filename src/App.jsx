@@ -2,6 +2,7 @@ import { useState } from 'react'
 import CodeBlock from './site/CodeBlock.jsx'
 import { rpsStages } from './live-project-rps'
 import { conceptExamples } from './examples'
+import { conceptExamplesB } from './examples-b'
 import templateCss from './examples/template.css?raw'
 
 function GitHubIcon({ size = 15 }) {
@@ -44,20 +45,25 @@ const RAKHANGE_GITHUB = 'https://github.com/icancodefyi'
 const SOLUTIONS_PASSWORD = 'session-zaid'
 const STAGES_PASSWORD = 'rps'
 
-const groups = [
+const sessions = [
   {
-    kind: 'concept',
-    name: 'Concept Examples',
-    items: conceptExamples,
+    key: 'a',
+    label: 'Core React',
+    groups: [
+      { kind: 'concept', name: 'Concept Examples', items: conceptExamples },
+      { kind: 'stage',   name: 'Live Project — Rock Paper Scissors', items: rpsStages },
+    ],
   },
   {
-    kind: 'stage',
-    name: 'Live Project — Rock Paper Scissors',
-    items: rpsStages,
+    key: 'b',
+    label: 'Forms → Custom Hooks',
+    groups: [
+      { kind: 'concept', name: 'Concept Examples', items: conceptExamplesB },
+    ],
   },
 ]
 
-function findItem(id) {
+function findItem(id, groups) {
   for (const group of groups) {
     const found = group.items.find((item) => item.id === id)
     if (found) return { found, kind: group.kind }
@@ -354,6 +360,7 @@ function LockModal({ onClose, onUnlock }) {
 }
 
 function App() {
+  const [session, setSession] = useState('a')
   const [activeId, setActiveId] = useState('jsx')
   const [solutionsUnlocked, setSolutionsUnlocked] = useState(() => {
     try {
@@ -370,6 +377,15 @@ function App() {
     }
   })
   const [showLock, setShowLock] = useState(false)
+
+  const currentSession = sessions.find((s) => s.key === session)
+  const groups = currentSession.groups
+
+  function switchSession(key) {
+    setSession(key)
+    const first = sessions.find((s) => s.key === key).groups[0]?.items[0]
+    if (first) setActiveId(first.id)
+  }
 
   function unlock() {
     try {
@@ -399,7 +415,7 @@ function App() {
     setSolutionsUnlocked(false)
   }
 
-  const current = findItem(activeId)
+  const current = findItem(activeId, groups)
 
   return (
     <>
@@ -430,6 +446,17 @@ function App() {
 
       <div className="viewer">
         <aside className="sidebar">
+          <div className="session-toggle">
+            {sessions.map((s) => (
+              <button
+                key={s.key}
+                className={'session-btn' + (s.key === session ? ' active' : '')}
+                onClick={() => switchSession(s.key)}
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
           {groups.map((group) => (
             <div key={group.name}>
               <h2>{group.name}</h2>
